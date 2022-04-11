@@ -10,9 +10,9 @@ export function useReactiveVar<T>(rv: ReactiveVar<T>): T {
   const setValue = useState(value)[1];
 
   useEffect(() => {
-    mounted.current = true
+    mounted.current = true;
     return () => {
-      mounted.current = false
+      mounted.current = false;
     }
   }, [])
 
@@ -29,9 +29,9 @@ export function useReactiveVar<T>(rv: ReactiveVar<T>): T {
       return rv.onNextChange((newValue) => {
         // Check if still mounted before updating state
         if (!mounted.current) {
-          return
+          return;
         }
-        setValue(newValue)
+        setValue(newValue);
       });
     }
   }, [value]);
